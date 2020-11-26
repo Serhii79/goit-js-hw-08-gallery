@@ -1,19 +1,5 @@
 import arrayImages from './gallery-items.js';
 
-{/* <li class="gallery__item">
-  <a
-    class="gallery__link"
-    href="https://cdn.pixabay.com/photo/2010/12/13/10/13/tulips-2546_1280.jpg"
-  >
-    <img
-      class="gallery__image"
-      src="https://cdn.pixabay.com/photo/2010/12/13/10/13/tulips-2546__340.jpg"
-      data-source="https://cdn.pixabay.com/photo/2010/12/13/10/13/tulips-2546_1280.jpg"
-      alt="Tulips"
-    />
-  </a>
-</li> */}
-
 const galleryRef = document.querySelector('.gallery');
 
 const createLi = ({ preview, original, description }) => `<li class="gallery__item">
@@ -32,3 +18,11 @@ const createLi = ({ preview, original, description }) => `<li class="gallery__it
 
 const createArrayLi = arrayImages.map((item) => createLi(item));
 galleryRef.insertAdjacentHTML('beforeend', createArrayLi.join(''));
+
+const largeImage = document.querySelector('.gallery__image');
+
+galleryRef.addEventListener('click', event => {
+  event.preventDefault();
+  console.log(event.target);
+  
+});
