@@ -1,8 +1,13 @@
 import arrayImages from './gallery-items.js';
 
-const galleryRef = document.querySelector('.js-gallery');
-const lightboxRef = document.querySelector('js-lightbox');
-const lightboxImageRef = document.querySelector('.lightbox__image');
+const refs = {
+  gallery: document.querySelector('.js-gallery'),
+  lightbox: document.querySelector('.js-lightbox'),
+  lightboxImage: document.querySelector('.lightbox__image'),
+  lightboxButton: document.querySelector('.lightbox__button'),
+};
+
+console.log(refs.lightboxImage);
 
 const createLi = ({ preview, original, description }) => `<li class="gallery__item">
   <a
@@ -19,11 +24,12 @@ const createLi = ({ preview, original, description }) => `<li class="gallery__it
 </li>`;
 
 const createArrayLi = arrayImages.map((item) => createLi(item));
-galleryRef.insertAdjacentHTML('beforeend', createArrayLi.join(''));
+
+refs.gallery.insertAdjacentHTML('beforeend', createArrayLi.join(''));
 
 const largeImage = document.querySelector('.gallery__image');
 
-galleryRef.addEventListener('click', event => {
+refs.gallery.addEventListener('click', event => {
   event.preventDefault();
   // console.log(event.target);
 
@@ -34,8 +40,11 @@ galleryRef.addEventListener('click', event => {
   const imageRef = event.target;
   const largeImageUrl = imageRef.dataset.source;
 
-  console.log(largeImageUrl);
-  // lightboxRef.classList.add('.is-open');
-  // lightboxImageRef.scr = largeImageUrl;
+  refs.lightbox.classList.add('is-open');
+  refs.lightboxImage.src = largeImageUrl;
 
+});
+
+refs.lightboxButton.addEventListener('click', () => {
+  refs.lightbox.classList.remove('is-open');
 });
