@@ -46,12 +46,21 @@ refs.gallery.addEventListener('click', event => {
 
 });
 
+let valueSrc = refs.lightboxImage.src;
+
+window.addEventListener('keydown', (event) => {
+  if (event.code === 'Escape') {
+    valueSrc = "";
+    refs.lightbox.classList.remove('is-open');
+  };
+});
+
 refs.lightboxOverlay.addEventListener('click', () => {
-   refs.lightboxImage.src = "";
+  valueSrc = "";
   refs.lightbox.classList.remove('is-open');
 });
 
 refs.lightboxButton.addEventListener('click', () => {
-   refs.lightboxImage.src = "";
+  valueSrc = "";
   refs.lightbox.classList.remove('is-open');
 });
