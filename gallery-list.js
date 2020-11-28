@@ -5,6 +5,7 @@ const refs = {
   lightbox: document.querySelector('.js-lightbox'),
   lightboxImage: document.querySelector('.lightbox__image'),
   lightboxButton: document.querySelector('.lightbox__button'),
+  lightboxOverlay: document.querySelector('.lightbox__overlay'),
 };
 
 console.log(refs.lightboxImage);
@@ -27,7 +28,7 @@ const createArrayLi = arrayImages.map((item) => createLi(item));
 
 refs.gallery.insertAdjacentHTML('beforeend', createArrayLi.join(''));
 
-const largeImage = document.querySelector('.gallery__image');
+// const largeImage = document.querySelector('.gallery__image');
 
 refs.gallery.addEventListener('click', event => {
   event.preventDefault();
@@ -45,6 +46,12 @@ refs.gallery.addEventListener('click', event => {
 
 });
 
+refs.lightboxOverlay.addEventListener('click', () => {
+   refs.lightboxImage.src = "";
+  refs.lightbox.classList.remove('is-open');
+});
+
 refs.lightboxButton.addEventListener('click', () => {
+   refs.lightboxImage.src = "";
   refs.lightbox.classList.remove('is-open');
 });
